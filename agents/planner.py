@@ -66,13 +66,3 @@ Return only valid JSON.
         raise ValueError("Planner must return between 3 and 5 tasks.")
 
     return plan
-
-if __name__ == "__main__":
-    question = "Should businesses adopt AI agents?"
-
-    plan = create_plan(question)
-
-    print("RESEARCH PLAN:")
-
-    for index, task in enumerate(plan, start=1):
-        print(f"{index}. {task}")

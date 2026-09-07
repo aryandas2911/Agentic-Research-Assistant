@@ -69,19 +69,3 @@ Do not include unnecessary explanations.
         "findings": summary,
         "sources": sources
     }
-
-
-if __name__ == "__main__":
-    result = research("What are the latest developments in AI agents in 2026?")
-
-    print("\nTASK:")
-    print(result["task"])
-
-    print("\nFINDINGS:")
-    print(result["findings"])
-
-    print("\nSOURCES:")
-
-    for source in result["sources"]:
-        print(f"- {source['title']}")
-        print(f"  {source['url']}")
