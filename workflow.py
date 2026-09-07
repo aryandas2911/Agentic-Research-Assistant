@@ -1,6 +1,7 @@
 from agents.planner import create_plan
 from agents.researcher import research
 from agents.critic import critique
+from agents.final_answer import generate_final_answer
 
 MAX_ITERATIONS = 2
 
@@ -58,43 +59,17 @@ def run_research(question):
                 print(f"- {task}")
 
             plan = additional_tasks
+        
+    print("\nGenerating final answer...")
+
+    final_answer = generate_final_answer(
+        question,
+        research_results
+    )
 
     return {
         "question": question,
         "plan": plan,
-        "research_results": research_results
+        "research_results": research_results,
+        "final_answer": final_answer
     }
-
-
-if __name__ == "__main__":
-
-    question = "Should businesses adopt AI agents in 2026?"
-
-    state = run_research(question)
-
-    print("\n\n")
-    print("=" * 60)
-    print("FINAL RESEARCH STATE")
-    print("=" * 60)
-
-    print("\nQUESTION:")
-    print(state["question"])
-
-    print("\nTOTAL RESEARCH RESULTS:")
-
-    for result in state["research_results"]:
-
-        print("\n" + "-" * 60)
-
-        print("TASK:")
-        print(result["task"])
-
-        print("\nFINDINGS:")
-        print(result["findings"])
-
-        print("\nSOURCES:")
-
-        for source in result["sources"]:
-
-            print(f"- {source['title']}")
-            print(f"  {source['url']}")
