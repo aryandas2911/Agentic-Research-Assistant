@@ -4,3 +4,4 @@ langchain-groq
 serpapi 
 streamlit 
 python-dotenv
+google-search-results
