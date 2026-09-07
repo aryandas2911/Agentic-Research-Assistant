@@ -1,0 +1,24 @@
+from dotenv import load_dotenv
+from groq import Groq
+import os
+
+load_dotenv()
+
+api_key = os.getenv("GROQ_API_KEY")
+
+if not api_key:
+    raise ValueError("GROQ_API_KEY not found in .env")
+
+client = Groq(api_key=api_key)
+
+response = client.chat.completions.create(
+    model="qwen/qwen3.6-27b",
+    messages=[
+        {
+            "role": "user",
+            "content": "Explain what an AI agent is in one sentence."
+        }
+    ]
+)
+
+print(response.choices[0].message.content)
